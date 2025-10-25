@@ -1,0 +1,49 @@
+1. membuat database
+
+CREATE DATABASE myshop;
+
+2. membuat table
+
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama VARCHAR(255)NOT null,
+    email VARCHAR(255)NOT null,
+    password VARCHAR(255)NOT null
+);
+
+CREATE TABLE categories (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama VARCHAR(255)
+);
+
+CREATE TABLE items (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama_items VARCHAR(255)NOT null,
+    description_items VARCHAR(255)NOT null,
+    price_items integer NOT null,
+    stock_items integer NOT null,
+    category_id integer NOT null,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+); 
+
+3. memasukkan data pada table
+
+INSERT INTO users (nama, email, password) VALUES ('John Doe', 'john@doe.com', 'john123'), ('Jane Doe', 'jane@doe.com', 'jenita123');
+
+INSERT INTO categories (nama) VALUES ('gadget'), ('cloth'), ('men'), ('women'), ('branded');
+
+INSERT INTO items (nama_items, description_items, price_items, stock_items, category_id) VALUES ('Sumsang b50', 'hape keren dari merek sumsang', 4000000, 100, 1), ('Uniklooh', 'baju keren dari brand ternama', 500000, 50, 2), ('IMHO Watch', 'jam tangan anak yang jujur banget', 2000000, 10, 1);
+
+4. mengambil data dari database
+
+-> mengambil data users
+SELECT nama, email FROM users;
+
+-> mengambil data items
+- SELECT * FROM items WHERE price_items > 1000000;
+- SELECT * FROM items WHERE nama_items LIKE '%uniklo%';
+- SELECT items.nama_items, items.description_items, items.price_items, items.stock_items, items.category_id, categories.nama AS kategori FROM items INNER JOIN categories ON items.category_id = categories.id;
+
+5.mengubah data
+
+UPDATE items SET price_items = 2500000 WHERE id = 1;
