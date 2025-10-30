@@ -11,3 +11,8 @@ Route::get('/', function () {
 Route::get('/register', [Register::class, 'register']);
 Route::post('/register', [Register::class, 'store']);
 Route::get('/home', [Home::class, 'home']);
+
+
+Route::get('/master', function () {
+    return view('component.master');
+});

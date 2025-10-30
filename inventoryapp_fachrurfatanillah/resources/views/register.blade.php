@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('title', 'Register')
+    
+@section('content')
     <h2>Buat Account Baru!</h2>
 
     <h3>Sign Up Form</h3>
@@ -45,5 +41,4 @@
         <textarea name="" id="bio"></textarea><br><br>
         <input type="submit" value="Sign Up">
     </form>
-</body>
-</html>
+@endsection

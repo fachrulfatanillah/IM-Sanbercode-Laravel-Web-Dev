@@ -11,6 +11,10 @@ class Home extends Controller
         $firstName = session('firstName');
         $lastName = session('lastName');
 
-        return view('home', compact('firstName', 'lastName'));
+        if ($firstName != null && $lastName != null) {
+            return view('home', compact('firstName', 'lastName'));
+        } else {
+            return view('register');
+        }
     }
 }
