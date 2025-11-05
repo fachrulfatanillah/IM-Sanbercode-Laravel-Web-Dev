@@ -3,7 +3,7 @@
 @section('title', 'Halaman Utama')
 @section('content')
 
-<h1>SanberBook</h1>
+    <h1>SanberBook</h1>
     
     <h2>Social Media Developer Santai Berkualitas</h2>
     

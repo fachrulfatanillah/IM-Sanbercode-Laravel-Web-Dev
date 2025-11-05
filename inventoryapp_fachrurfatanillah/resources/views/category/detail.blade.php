@@ -5,6 +5,6 @@
 <h1 class="text-primary">{{ $detailCategory->name }}</h1>
 <p>{{ $detailCategory->description }}</p>
 
-<a href="/genre" class="btn btn-secondary btn-sm">Kembali</a>
+<a href="/category" class="btn btn-secondary btn-sm">Kembali</a>
 
 @endsection

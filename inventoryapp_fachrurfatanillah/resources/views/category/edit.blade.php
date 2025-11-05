@@ -2,7 +2,7 @@
 @section('title', "Update Category")
 @section('content')
 
-<form action="/genre/{{ $editCategory->id }}" method="POST">
+<form action="/category/{{ $editCategory->id }}" method="POST">
     @csrf
     @method("PUT")
 

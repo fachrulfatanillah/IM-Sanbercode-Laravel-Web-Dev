@@ -27,11 +27,11 @@
                     <span class="hide-menu">UI COMPONENTS</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/home" aria-expanded="false">
+                    <a class="sidebar-link" href="/category" aria-expanded="false">
                         <span>
                         <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
                         </span>
-                        <span class="hide-menu">Sample Page</span>
+                        <span class="hide-menu">Category</span>
                     </a>
                 </li>
                 <li class="nav-small-cap">
@@ -49,11 +49,6 @@
             </ul>
             <div class="unlimited-access hide-menu bg-primary-subtle position-relative mb-7 mt-7 rounded-3"> 
                 <div class="d-flex">
-                <div class="unlimited-access-title me-3">
-                    <h6 class="fw-semibold fs-4 mb-6 text-dark w-75">Upgrade to pro</h6>
-                    <a href="#" target="_blank"
-                    class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
-                </div>
                 <div class="unlimited-access-img">
                     <img src="../assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
                 </div>

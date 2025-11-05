@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', "Tampil Category")
+@section('title', "List Category")
 @section('content')
 
 @if (session()->has('success'))
@@ -8,7 +8,7 @@
     </div>
 @endif
 
-<a href="/genre/create" class="btn btn-primary btn-sm my-2">Tambah</a>
+<a href="/category/create" class="btn btn-primary btn-sm my-2">Tambah</a>
 
 <table class="table">
   <thead>
@@ -24,20 +24,20 @@
             <th scope="row">{{ $loop->iteration }}</th>
             <td colspan="2">{{ $item->name }}</td>
             <td>
-                <form action="/genre/{{ $item->id }}" method="POST">
+                <form action="/category/{{ $item->id }}" method="POST">
                     @csrf
                     @method('DELETE')
 
                     <input type="submit" class="btn btn-danger btn-sm" value="Delete">
-                    <a href="/genre/{{ $item->id }}" class="btn btn-warning btn-sm">Detail</a>
-                    <a href="/genre/{{ $item->id }}/edit" class="btn btn-info btn-sm">Edit</a>
+                    <a href="/category/{{ $item->id }}" class="btn btn-warning btn-sm">Detail</a>
+                    <a href="/category/{{ $item->id }}/edit" class="btn btn-info btn-sm">Edit</a>
 
                 </form>
             </td>
         </tr>
     @empty
         <tr>
-            <td>Tidak ada Genre</td>
+            <td>Tidak ada Category</td>
         </tr>
     @endforelse
   </tbody>

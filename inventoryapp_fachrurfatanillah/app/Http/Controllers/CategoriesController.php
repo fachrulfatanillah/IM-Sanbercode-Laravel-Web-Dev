@@ -13,7 +13,7 @@ class CategoriesController extends Controller
 {
     public function create()
     {
-        return view('genre.tambah');
+        return view('category.tambah');
     }
 
     public function store(Request $request)
@@ -38,28 +38,28 @@ class CategoriesController extends Controller
             'updated_at' => $now
         ]);
 
-        return redirect('/genre')->with('success', 'Berhasil Tambah Category!');
+        return redirect('/category')->with('success', 'Berhasil Tambah Category!');
     }
 
     public function index()
     {
         $ct = DB::table('categories')->get();
 
-        return view('genre.tampil', ['categories' => $ct]);
+        return view('category.tampil', ['categories' => $ct]);
     }
 
     public function show($id)
     {
         $data = DB::table('categories')->find($id);
 
-        return view('genre.detail', ['detailCategory' => $data]);
+        return view('category.detail', ['detailCategory' => $data]);
     }
 
     public function edit($id)
     {
         $data = DB::table('categories')->find($id);
 
-        return view('genre.edit', ['editCategory' => $data]);
+        return view('category.edit', ['editCategory' => $data]);
     }
 
     public function update($id, Request $request)
@@ -85,13 +85,13 @@ class CategoriesController extends Controller
             ]
         );
 
-        return redirect('/genre')->with('success', 'Berhasil Update Category');
+        return redirect('/category')->with('success', 'Berhasil Update Category');
     }
 
     public function destroy($id)
     {
-        DB::table('categories')->where('id', $id)->delete();
+        DB::table('category')->where('id', $id)->delete();
 
-        return redirect('/genre')->with('success', 'Berhasil Hapus categories');
+        return redirect('/category')->with('success', 'Berhasil Hapus categories');
     }
 }

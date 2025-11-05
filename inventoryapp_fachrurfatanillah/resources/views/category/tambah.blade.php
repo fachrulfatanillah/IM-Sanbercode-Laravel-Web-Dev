@@ -2,7 +2,7 @@
 @section('title', "Tambah Category")
 @section('content')
 
-<form action="/genre" method="POST">
+<form action="/category" method="POST">
     @csrf
 
     @if ($errors->any())
@@ -19,7 +19,7 @@
     <label class="form-label">Category Name</label>
     <input type="text" name="name" class="form-control" value="{{ old('name') }}">
   </div>
-  <div class="mb-3">
+  <div class="mb-3" style="display: block, ">
     <label class="form-label" class="form-label">Category Description</label>
     <textarea name="description" class="formo-control" id="" cols="30" rows="10" {{old('description')}}></textarea>
   </div>
