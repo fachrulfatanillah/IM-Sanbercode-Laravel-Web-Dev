@@ -34,26 +34,15 @@
                         <span class="hide-menu">Category</span>
                     </a>
                 </li>
-                <li class="nav-small-cap">
-                    <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-6" class="fs-6"></iconify-icon>
-                    <span class="hide-menu">AUTH</span>
-                </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/register" aria-expanded="false">
+                    <a class="sidebar-link" href="/products" aria-expanded="false">
                         <span>
-                        <iconify-icon icon="solar:user-plus-rounded-bold-duotone" class="fs-6"></iconify-icon>
+                        <iconify-icon icon="solar:bookmark-square-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
                         </span>
-                        <span class="hide-menu">Register</span>
+                        <span class="hide-menu">Products</span>
                     </a>
                 </li>
             </ul>
-            <div class="unlimited-access hide-menu bg-primary-subtle position-relative mb-7 mt-7 rounded-3"> 
-                <div class="d-flex">
-                <div class="unlimited-access-img">
-                    <img src="../assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
-                </div>
-                </div>
-            </div>
             </nav>
             <!-- End Sidebar navigation -->
         </div>
