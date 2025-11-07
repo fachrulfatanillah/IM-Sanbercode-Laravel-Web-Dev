@@ -29,7 +29,9 @@ Route::delete('/category/{id}', [CategoriesController::class, 'destroy']);
 Route::get('/products', [ProductsController::class, 'index']);
 Route::get('/products/{category}/{id}/detail/{name}', [ProductsController::class, 'show']);
 Route::get('/products/create', [ProductsController::class, 'create']);
-Route::get('/products/edit', [ProductsController::class, 'edit']);
 Route::post('/products/create', [ProductsController::class, 'store']);
+Route::get('/products/edit/{id}', [ProductsController::class, 'edit']);
+Route::put('/products/edit/{id}', [ProductsController::class, 'update']);
+Route::delete('/products/delete/{id}', [ProductsController::class, 'destroy']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);
