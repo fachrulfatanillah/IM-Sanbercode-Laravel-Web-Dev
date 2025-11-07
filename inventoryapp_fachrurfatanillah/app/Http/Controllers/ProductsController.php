@@ -123,7 +123,7 @@ class ProductsController extends Controller
         $product = Products_Model::where('uuid', $id)->firstOrFail();
 
         if (!$product) {
-            return redirect('/products')->with('error', 'Kategori tidak ditemukan');
+            return redirect('/products')->with('error', 'Produk tidak ditemukan');
         }
 
         $product->delete();
