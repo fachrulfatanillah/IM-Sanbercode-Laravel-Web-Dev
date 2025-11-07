@@ -23,10 +23,13 @@ Route::post('/category', [CategoriesController::class, 'store']);
 Route::get('/category', [CategoriesController::class, 'index']);
 Route::get('/category/{id}', [CategoriesController::class, 'show']);
 Route::get('/category/{id}/edit', [CategoriesController::class, 'edit']);
-Route::put('/ategory/{id}', [CategoriesController::class, 'update']);
+Route::put('/category/{id}', [CategoriesController::class, 'update']);
 Route::delete('/category/{id}', [CategoriesController::class, 'destroy']);
 
 Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/products/{category}/{id}/detail/{name}', [ProductsController::class, 'show']);
 Route::get('/products/create', [ProductsController::class, 'create']);
+Route::get('/products/edit', [ProductsController::class, 'edit']);
+Route::post('/products/create', [ProductsController::class, 'store']);
 
 Route::get('/logout', [LogoutController::class, 'logout']);

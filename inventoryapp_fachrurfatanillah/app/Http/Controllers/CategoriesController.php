@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\FuncCall;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\Categories_Model;
 use Carbon\Carbon;
 
 
@@ -24,18 +23,14 @@ class CategoriesController extends Controller
                 'description' => 'required',
             ],
             [
-                'required' => 'inputan :attribute Wajib diisi.',
-                'min' => 'inputan : attribute minimal :min karakter'
+                'required' => 'Inputan :attribute wajib diisi.',
+                'min' => 'Inputan :attribute minimal :min karakter.',
             ]
         );
 
-        $now = Carbon::now();
-
-        DB::table('categories')->insert([
+        Categories_Model::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
-            'created_at' => $now,
-            'updated_at' => $now
         ]);
 
         return redirect('/category')->with('success', 'Berhasil Tambah Category!');
@@ -43,21 +38,21 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $ct = DB::table('categories')->get();
+        $categories = Categories_Model::all();
 
-        return view('category.tampil', ['categories' => $ct]);
+        return view('category.tampil', ['categories' => $categories]);
     }
 
     public function show($id)
     {
-        $data = DB::table('categories')->find($id);
+        $data = Categories_Model::find($id);
 
         return view('category.detail', ['detailCategory' => $data]);
     }
 
     public function edit($id)
     {
-        $data = DB::table('categories')->find($id);
+        $data = Categories_Model::find($id);
 
         return view('category.edit', ['editCategory' => $data]);
     }
@@ -70,28 +65,36 @@ class CategoriesController extends Controller
                 'description' => 'required',
             ],
             [
-                'required' => 'inputan :attribute Wajib diisi.',
-                'min' => 'inputan : attribute minimal :min karakter'
+                'required' => 'Inputan :attribute wajib diisi.',
+                'min' => 'Inputan :attribute minimal :min karakter.'
             ]
         );
 
-        $now = Carbon::now();
+        $category = Categories_Model::find($id);
 
-        DB::table('categories')->where('id', $id)->update(
-            [
-                'name' => $request->input('name'),
-                'description' => $request->input('description'),
-                'updated_at' => $now
-            ]
-        );
+        if (!$category) {
+            return redirect('/category')->with('error', 'Kategori tidak ditemukan');
+        }
+
+        $category->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'update_at' => Carbon::now(),
+        ]);
 
         return redirect('/category')->with('success', 'Berhasil Update Category');
     }
 
     public function destroy($id)
     {
-        DB::table('category')->where('id', $id)->delete();
+        $category = Categories_Model::find($id);
 
-        return redirect('/category')->with('success', 'Berhasil Hapus categories');
+        if (!$category) {
+            return redirect('/category')->with('error', 'Kategori tidak ditemukan');
+        }
+
+        $category->delete();
+
+        return redirect('/category')->with('success', 'Berhasil Hapus Category');
     }
 }
