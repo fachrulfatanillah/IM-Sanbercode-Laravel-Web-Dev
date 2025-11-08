@@ -30,6 +30,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/category/{id}/edit', [CategoriesController::class, 'edit']);
     Route::put('/category/{id}', [CategoriesController::class, 'update']);
     Route::delete('/category/{id}', [CategoriesController::class, 'destroy']);
+
+    Route::get('/products/create', [ProductsController::class, 'create']);
+    Route::post('/products/create', [ProductsController::class, 'store']);
+    Route::get('/products/edit/{id}', [ProductsController::class, 'edit']);
+    Route::put('/products/edit/{id}', [ProductsController::class, 'update']);
+    Route::delete('/products/delete/{id}', [ProductsController::class, 'destroy']);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -37,11 +43,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/products', [ProductsController::class, 'index']);
     Route::get('/products/{category}/{id}/detail/{name}', [ProductsController::class, 'show']);
-    Route::get('/products/create', [ProductsController::class, 'create']);
-    Route::post('/products/create', [ProductsController::class, 'store']);
-    Route::get('/products/edit/{id}', [ProductsController::class, 'edit']);
-    Route::put('/products/edit/{id}', [ProductsController::class, 'update']);
-    Route::delete('/products/delete/{id}', [ProductsController::class, 'destroy']);
 
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::get('/profile/edit', [ProfileController::class, 'edit']);

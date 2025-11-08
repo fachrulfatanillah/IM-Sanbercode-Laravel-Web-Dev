@@ -29,11 +29,13 @@
 
             {{-- Tombol Aksi --}}
             <div class="d-flex justify-content-end gap-2 mt-4">
-                <a href="/products/edit/{{ $dataProduct->uuid }}" class="btn btn-warning px-4 rounded-pill">Edit Produk</a>
-                {{-- <a href="#" class="btn btn-danger px-4 rounded-pill">Hapus Produk</a> --}}
-                <button type="button" class="btn btn-danger px-4 rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $dataProduct->uuid }}">
-                    Hapus
-                </button>
+                @if (Auth::user()->status == 'admin')
+                    <a href="/products/edit/{{ $dataProduct->uuid }}" class="btn btn-warning px-4 rounded-pill">Edit Produk</a>
+                    {{-- <a href="#" class="btn btn-danger px-4 rounded-pill">Hapus Produk</a> --}}
+                    <button type="button" class="btn btn-danger px-4 rounded-pill" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $dataProduct->uuid }}">
+                        Hapus
+                    </button>
+                @endif
                 <a href="/products" class="btn btn-secondary px-4 rounded-pill">Kembali</a>
             </div>
         </div>

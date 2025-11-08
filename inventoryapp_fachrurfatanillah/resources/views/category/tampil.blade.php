@@ -20,7 +20,7 @@
                 Tambah Category
             </a>
         </div>
-
+        
         <div class="table-responsive">
             <table class="table table-striped align-middle">
                 <thead>
@@ -33,7 +33,7 @@
                 <tbody>
                     @forelse ($categories as $item)
                         <tr>
-                            <th scope="row" class="text-center">{{ $loop->iteration }}</th>
+                            <th scope="row" class="text-center">CT{{ $loop->iteration }}</th>
                             <td>{{ $item->name }}</td>
                             <td class="text-center">
                                 <form action="/category/{{ $item->id }}" method="POST" class="d-inline">

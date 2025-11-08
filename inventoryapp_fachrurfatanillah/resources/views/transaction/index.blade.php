@@ -20,7 +20,7 @@
         @endif
 
         <table class="table table-bordered table-hover align-middle">
-            <thead class="table-primary">
+            <thead class="table-light">
                 <tr class="text-center">
                     <th>ID</th>
                     <th>Nama</th>
@@ -32,14 +32,14 @@
             <tbody>
                 @forelse ($transactionData as $trx)
                     <tr>
-                        <td class="text-center">{{ $trx->id }}</td>
+                        <td class="text-center">TR{{ $loop->iteration }}</td>
                         <td>{{ $trx->user->username }}</td>
                         <td>{{ $trx->product->name }}</td>
                         <td class="text-center">
                             @if ($trx->type === 'in')
-                                <span class="badge bg-success">In</span>
+                                <span class="badge bg-success px-4 py-1 text-center d-inline-block">In</span>
                             @else
-                                <span class="badge bg-danger">Out</span>
+                                <span class="badge bg-danger px-3 py-1 text-center d-inline-block">Out</span>
                             @endif
                         </td>
                         <td class="text-end fw-semibold">{{ number_format($trx->amount, 0, ',', '.') }}</td>

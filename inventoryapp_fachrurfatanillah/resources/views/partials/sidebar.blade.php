@@ -13,7 +13,6 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-                    <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="/" aria-expanded="false">
@@ -25,16 +24,18 @@
                 </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-                    <span class="hide-menu">UI COMPONENTS</span>
+                    <span class="hide-menu">Menu</span>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="/category" aria-expanded="false">
-                        <span>
-                        <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
-                        </span>
-                        <span class="hide-menu">Category</span>
-                    </a>
-                </li>
+                @if (Auth::user()->status == 'admin')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/category" aria-expanded="false">
+                            <span>
+                            <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
+                            </span>
+                            <span class="hide-menu">Category</span>
+                        </a>
+                    </li>
+                @endif
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="/products" aria-expanded="false">
                         <span>

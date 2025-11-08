@@ -8,9 +8,13 @@
     </div>
 @endif
 
-<a href="/products/create" class="btn btn-primary btn-sm my-3 mx-3 mb-4 px-4 py-2 rounded-pill shadow-sm d-inline-flex align-items-center gap-2">
-    Tambah Produk
-</a>
+@if (Auth::user()->status == 'admin')
+    <a href="/products/create" class="btn btn-primary btn-sm my-3 mx-3 mb-4 px-4 py-2 rounded-pill shadow-sm d-inline-flex align-items-center gap-2">
+        Tambah Produk
+    </a>
+@endif
+
+
 
 <div class="container-fluid">
     <div class="row">
@@ -38,12 +42,14 @@
                         {{-- Tombol Aksi --}}
                         <div class="mt-auto">
                             <a href="/products/{{ $item->category->name }}/{{ $item->uuid }}/detail/{{ $item->name }}" class="btn btn-primary w-100 mb-2">Lihat Detail</a>
-                            <div class="d-flex justify-content-between">
-                                <a href="/products/edit/{{ $item->uuid }}" class="btn btn-warning btn-sm w-50 me-2 rounded-4">Edit</a>
-                                <button type="button" class="btn btn-danger btn-sm w-50 rounded-4" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->uuid }}">
-                                    Hapus
-                                </button>
-                            </div>
+                            @if (Auth::user()->status == 'admin')
+                                <div class="d-flex justify-content-between">
+                                    <a href="/products/edit/{{ $item->uuid }}" class="btn btn-warning btn-sm w-50 me-2 rounded-4">Edit</a>
+                                    <button type="button" class="btn btn-danger btn-sm w-50 rounded-4" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->uuid }}">
+                                        Hapus
+                                    </button>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
