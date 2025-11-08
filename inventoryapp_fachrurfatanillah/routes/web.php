@@ -7,6 +7,7 @@ use App\Http\Controllers\logoutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/edit', [ProfileController::class, 'save']);
     Route::put('/profile/change-password', [ProfileController::class, 'updatePassword']);
     Route::get('/profile/change-password', [ProfileController::class, 'changePassword']);
+
+    Route::get('/transaction', [TransactionController::class, 'index']);
+    Route::get('/transaction/create', [TransactionController::class, 'create']);
+    Route::post('/transaction/create', [TransactionController::class, 'store']);
 
     Route::post('/logout', [LogoutController::class, 'logout']);
 });

@@ -42,6 +42,14 @@
                         <span class="hide-menu">Products</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/transaction" aria-expanded="false">
+                        <span>
+                        <iconify-icon icon="solar:sticker-smile-circle-2-bold-duotone" class="fs-6"></iconify-icon>
+                        </span>
+                        <span class="hide-menu">Transaksi</span>
+                    </a>
+                </li>
             </ul>
             </nav>
             <!-- End Sidebar navigation -->
