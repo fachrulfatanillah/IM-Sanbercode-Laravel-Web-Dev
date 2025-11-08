@@ -44,4 +44,8 @@ class Categories_Model extends Model
     {
         return $this->belongsTo(Categories_Model::class, 'categories_id', 'id');
     }
+    public function products()
+    {
+        return $this->hasMany(Products_Model::class, 'categories_id');
+    }
 }

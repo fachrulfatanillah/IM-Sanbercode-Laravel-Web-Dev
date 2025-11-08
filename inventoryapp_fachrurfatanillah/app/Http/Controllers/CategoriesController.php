@@ -45,9 +45,9 @@ class CategoriesController extends Controller
 
     public function show($id)
     {
-        $data = Categories_Model::find($id);
+        $detailCategory = Categories_Model::with('products')->findOrFail($id);
 
-        return view('category.detail', ['detailCategory' => $data]);
+        return view('category.detail', compact('detailCategory'));
     }
 
     public function edit($id)

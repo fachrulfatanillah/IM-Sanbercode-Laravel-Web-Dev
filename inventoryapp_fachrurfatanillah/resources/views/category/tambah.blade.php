@@ -2,28 +2,41 @@
 @section('title', "Tambah Category")
 @section('content')
 
-<form action="/category" method="POST">
-    @csrf
+<div class="card shadow-sm border-0 rounded-4 overflow-hidden mx-auto">
+    <div class="card-header bg-primary text-white text-center py-3">
+        <h4 class="mb-0 fw-bold text-light">Tambah Category</h4>
+    </div>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <div class="card-body bg-light px-4 py-4">
+        <form action="/category" method="POST">
+            @csrf
 
-  <div class="mb-3">
-    <label class="form-label">Category Name</label>
-    <input type="text" name="name" class="form-control" value="{{ old('name') }}">
-  </div>
-  <div class="mb-3" style="display: block, ">
-    <label class="form-label" class="form-label">Category Description</label>
-    <textarea name="description" class="formo-control" id="" cols="30" rows="10" {{old('description')}}></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-    
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <div class="mb-3">
+                <label for="name" class="form-label fw-semibold">Category Name</label>
+                <input type="text" name="name" id="name" class="form-control rounded-3" value="{{ old('name') }}" placeholder="Masukkan nama category" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label fw-semibold">Category Description</label>
+                <textarea name="description" id="description" class="form-control rounded-3" cols="30" rows="5" placeholder="Masukkan deskripsi category">{{ old('description') }}</textarea>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/category" class="btn btn-outline-primary rounded-pill px-4">Batal</a>
+                <button type="submit" class="btn btn-primary rounded-pill px-4">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 @endsection

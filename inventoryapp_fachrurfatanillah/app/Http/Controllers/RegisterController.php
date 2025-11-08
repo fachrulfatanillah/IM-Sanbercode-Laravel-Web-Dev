@@ -37,12 +37,22 @@ class RegisterController extends Controller
             'username' => $validatedData['username'],
             'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
-            'status' => 'staf',
+            'status' => $this->checkUserStatus(),
         ]);
         if ($user) {
             return redirect('/login');
         } else {
             return redirect()->back()->with('error', 'Gagal menyimpan data user.');
+        }
+    }
+
+    private function checkUserStatus()
+    {
+        $userCount = Users_Model::count();
+        if ($userCount > 0) {
+            return 'staf';
+        } else {
+            return 'admin';
         }
     }
 }
