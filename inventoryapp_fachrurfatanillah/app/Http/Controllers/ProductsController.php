@@ -6,9 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Categories_Model;
 use App\Models\Products_Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class ProductsController extends Controller
+class ProductsController extends Controller implements HasMiddleware
 {
+
+    public static function middleware(): array
+    {
+        return [
+            'auth',
+            new Middleware('admin', except: ['index', 'show'])
+        ];
+    }
+
     public function index()
     {
         $productsData = Products_Model::with('category')->get();

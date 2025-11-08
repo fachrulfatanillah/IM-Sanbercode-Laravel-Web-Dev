@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Users_Model;
+
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -28,16 +29,26 @@ class LoginController extends Controller
             'password.required' => 'Username wajib diisi.',
         ]);
 
-        $user = Users_Model::where('email', $validatedData['email'])->first();
+        if (Auth::attempt($validatedData)) {
+            $request->session()->regenerate();
 
-        if ($user && Hash::check($validatedData['password'], $user->password)) {
-            return redirect('/home')->with([
-                'uuid' => $user->uuid,
-            ]);
-        } else {
-            return redirect()->back()
-                ->withErrors(['login' => 'Email atau password tidak sesuai.'])
-                ->withInput();
+            return redirect()->intended('/');
         }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 }
+
+// $user = Users_Model::where('email', $validatedData['email'])->first();
+        // if ($user && Hash::check($validatedData['password'], $user->password)) {
+        //     Auth::login($user);
+        //     session(['uuid' => $user->uuid]);
+
+        //     return redirect('/');
+        // } else {
+        //     return redirect()->back()
+        //         ->withErrors(['login' => 'Email atau password tidak sesuai.'])
+        //         ->withInput();
+        // }

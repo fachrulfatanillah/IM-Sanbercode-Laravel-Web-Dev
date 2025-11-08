@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
-class Users_Model extends Model
+class Users_Model extends Authenticatable
 {
-    protected $table = 'Users';
-    protected $primaryKey = 'Id';
+
+    use Notifiable;
+
+    protected $table = 'users';
+    protected $primaryKey = 'id';
 
     public $timestamps = false;
 
@@ -22,10 +26,19 @@ class Users_Model extends Model
         'update_At',
     ];
 
-    protected $casts = [
-        'create_At' => 'datetime',
-        'update_At' => 'datetime',
+    protected $hidden = [
+        'password',
     ];
+
+    protected $casts = [
+        'create_at' => 'datetime',
+        'update_at' => 'datetime',
+    ];
+
+    public function getAuthIdentifierName()
+    {
+        return 'id';
+    }
 
     protected static function boot()
     {
@@ -33,12 +46,17 @@ class Users_Model extends Model
 
         static::creating(function ($model) {
             $model->uuid = (string) Str::uuid();
-            $model->Create_At = now();
-            $model->Update_At = now();
+            $model->create_at = now();
+            $model->update_at = now();
         });
 
         static::updating(function ($model) {
-            $model->Update_At = now();
+            $model->update_at = now();
         });
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile_Model::class, 'users_id');
     }
 }

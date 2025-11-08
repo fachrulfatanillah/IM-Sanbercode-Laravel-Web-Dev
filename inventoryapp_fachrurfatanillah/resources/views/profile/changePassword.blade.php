@@ -2,13 +2,23 @@
 @section('title', "Ganti Password")
 @section('content')
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="card shadow-sm border-0 rounded-4 overflow-hidden mx-auto">
     <div class="card-header text-white text-center py-3" style="background-color: rgb(0, 106, 255)">
         <h4 class="mb-0 fw-bold text-light">Ganti Password</h4>
     </div>
 
     <div class="card-body bg-light px-4 py-4">
-        <form action="" method="POST">
+        <form action="/profile/change-password" method="POST">
             @csrf
             @method('PUT')
 

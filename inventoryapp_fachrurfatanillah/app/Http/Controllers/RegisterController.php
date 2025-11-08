@@ -34,15 +34,13 @@ class RegisterController extends Controller
         ]);
 
         $user = Users_Model::create([
-            'Username' => $validatedData['username'],
-            'Email' => $validatedData['email'],
-            'Password' => Hash::make($validatedData['password']),
-            'Status' => 'staf',
+            'username' => $validatedData['username'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+            'status' => 'staf',
         ]);
         if ($user) {
-            return redirect('/home')->with([
-                'uuid' => $user->uuid,
-            ]);
+            return redirect('/login');
         } else {
             return redirect()->back()->with('error', 'Gagal menyimpan data user.');
         }
